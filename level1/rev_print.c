@@ -1,38 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   rev_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gojeda <gojeda@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 14:07:10 by gojeda            #+#    #+#             */
-/*   Updated: 2025/05/26 14:07:12 by gojeda           ###   ########.fr       */
+/*   Created: 2025/05/27 12:50:53 by gojeda            #+#    #+#             */
+/*   Updated: 2025/05/27 12:50:58 by gojeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-Assignment name  : ft_putstr
-Expected files   : ft_putstr.c
+Assignment name  : rev_print
+Expected files   : rev_print.c
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-Write a function that displays a string on the standard output.
+Write a program that takes a string, and displays the string in reverse
+followed by a newline.
 
-The pointer passed to the function contains the address of the string's first
-character.
+If the number of parameters is not 1, the program displays a newline.
 
-Your function must be declared as follows:
+Examples:
 
-void	ft_putstr(char *str);
+$> ./rev_print "zaz" | cat -e
+zaz$
+$> ./rev_print "dub0 a POIL" | cat -e
+LIOP a 0bud$
+$> ./rev_print | cat -e
+$
 */
 
 #include <unistd.h>
 
-void	ft_putstr(char	*str)
+int	main(int argc, char **argv)
 {
-	while (*str)
+	int	i;
+
+	i = 0;
+	if (argc == 2)
 	{
-		write(1, str, 1);
-		str++;
+		while (argv[1][i])
+			i++;
+		i--;
+		while (i >= 0)
+		{
+			write(1, &argv[1][i], 1);
+			i--;
+		}
 	}
+	write(1, "\n", 1);
+	return (0);
 }

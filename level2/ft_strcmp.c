@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gojeda <gojeda@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 14:26:24 by gojeda            #+#    #+#             */
-/*   Updated: 2025/05/26 14:26:27 by gojeda           ###   ########.fr       */
+/*   Created: 2025/05/27 17:18:13 by gojeda            #+#    #+#             */
+/*   Updated: 2025/05/27 17:18:15 by gojeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-Assignment name  : ft_strlen
-Expected files   : ft_strlen.c
+Assignment name  : ft_strcmp
+Expected files   : ft_strcmp.c
 Allowed functions:
 --------------------------------------------------------------------------------
 
-Write a function that returns the length of a string.
+Reproduce the behavior of the function strcmp (man strcmp).
 
 Your function must be declared as follows:
 
-int	ft_strlen(char *str);
+int    ft_strcmp(char *s1, char *s2);
 */
 
-int	ft_strlen(char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (s1[i] && s2[i])
+	{
+		if ((unsigned char) s1[i] != (unsigned char) s2[i])
+			return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 		i++;
-	return (i);
+	}
+	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 }

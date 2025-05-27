@@ -1,34 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   max.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gojeda <gojeda@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 14:26:24 by gojeda            #+#    #+#             */
-/*   Updated: 2025/05/26 14:26:27 by gojeda           ###   ########.fr       */
+/*   Created: 2025/05/27 21:02:56 by gojeda            #+#    #+#             */
+/*   Updated: 2025/05/27 21:02:57 by gojeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-Assignment name  : ft_strlen
-Expected files   : ft_strlen.c
+Assignment name  : max
+Expected files   : max.c
 Allowed functions:
 --------------------------------------------------------------------------------
 
-Write a function that returns the length of a string.
+Write the following function:
 
-Your function must be declared as follows:
+int		max(int* tab, unsigned int len);
 
-int	ft_strlen(char *str);
+The first parameter is an array of int, the second is the number of elements in
+the array.
+
+The function returns the largest number found in the array.
+
+If the array is empty, the function returns 0.
 */
 
-int	ft_strlen(char *str)
+int	max(int *tab, unsigned int len)
 {
-	int	i;
+	int	biggest;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (len == 0)
+		return (0);
+	biggest = *tab;
+	tab++;
+	len--;
+	while (len--)
+	{
+		if (*tab > biggest)
+			biggest = *tab;
+		tab++;
+	}
+	return (biggest);
 }

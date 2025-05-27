@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   is_power_of_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gojeda <gojeda@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 14:26:24 by gojeda            #+#    #+#             */
-/*   Updated: 2025/05/26 14:26:27 by gojeda           ###   ########.fr       */
+/*   Created: 2025/05/27 20:50:14 by gojeda            #+#    #+#             */
+/*   Updated: 2025/05/27 20:50:17 by gojeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-Assignment name  : ft_strlen
-Expected files   : ft_strlen.c
-Allowed functions:
+Assignment name  : is_power_of_2
+Expected files   : is_power_of_2.c
+Allowed functions: None
 --------------------------------------------------------------------------------
 
-Write a function that returns the length of a string.
+Write a function that determines if a given number is a power of 2.
+
+This function returns 1 if the given number is a power of 2,
+otherwise it returns 0.
 
 Your function must be declared as follows:
 
-int	ft_strlen(char *str);
+int	    is_power_of_2(unsigned int n);
 */
 
-int	ft_strlen(char *str)
+int	is_power_of_2(unsigned int n)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (n < 1)
+		return (0);
+	while (n % 2 == 0)
+		n /= 2;
+	return (n == 1);
 }

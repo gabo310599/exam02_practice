@@ -1,34 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gojeda <gojeda@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 14:26:24 by gojeda            #+#    #+#             */
-/*   Updated: 2025/05/26 14:26:27 by gojeda           ###   ########.fr       */
+/*   Created: 2025/05/27 17:47:03 by gojeda            #+#    #+#             */
+/*   Updated: 2025/05/27 17:47:05 by gojeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-Assignment name  : ft_strlen
-Expected files   : ft_strlen.c
-Allowed functions:
+Assignment name  : ft_strdup
+Expected files   : ft_strdup.c
+Allowed functions: malloc
 --------------------------------------------------------------------------------
 
-Write a function that returns the length of a string.
+Reproduce the behavior of the function strdup (man strdup).
 
 Your function must be declared as follows:
 
-int	ft_strlen(char *str);
+char    *ft_strdup(char *src);
 */
 
-int	ft_strlen(char *str)
+#include <stdlib.h>
+
+char	*ft_strdup(char *src)
 {
-	int	i;
+	int		i;
+	char	*dup;
 
 	i = 0;
-	while (str[i])
+	while (src[i])
 		i++;
-	return (i);
+	dup = (char *) malloc((i + 1) * sizeof(char));
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (src[i])
+	{
+		dup[i] = src[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }
